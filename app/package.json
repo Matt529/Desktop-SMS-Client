@@ -1,0 +1,14 @@
+{
+  "name": "desktopsmsclient",
+  "version": "0.1.0",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Justin Tervay",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-builder": "^2.2.0",
+    "electron-prebuilt": "^0.35.0"
+  }
+}
