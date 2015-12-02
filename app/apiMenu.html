@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Desktop SMS Client</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
+	<link rel="stylesheet" type="text/css" href="./css/apiInputCSS.css">
+
+	<script type="text/javascript" src="./apiMenu.js" ></script>
+	
+	<script type="text/javascript">
+		var key = loadAPIKey();
+	</script>
+
+</head>
+</body>
+
+	<h1>Please enter your Yappy API key.</h1>
+	<form>
+		<input type="text" name="apiKeyInput" placeholder="API Key" onkeypress="return handleEnterKeyPress(event);" id="apiField">
+	</form>
+	<div class="button raised" onclick="getAPIKey()" id="enterButton">
+		<div class="center" fit>Enter</div>
+		<paper-ripple fit></paper-ripple>
+	</div>
+</body>
+</html> 
