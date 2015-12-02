@@ -12,13 +12,13 @@ No Mac, Darwin available at this time.
 
 ###### Download Links (.zip):
 
-[Linux 32bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.1.0/linux-ia32.zip)
+[Linux 32bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.2/desktop-sms-client-linux32.zip)
 
-[Linux 64bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.1.0/linux-x64.zip)
+[Linux 64bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.2/desktop-sms-client-linux64.zip)
 
-[Windows 32bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.1.0/win-ia32.zip)
+[Windows 32bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.2/desktop-sms-client-win86.zip)
 
-[Windows 64bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.1.0/win-x64.zip)
+[Windows 64bit](https://github.com/jtervay97/Desktop-SMS-Client/releases/download/v0.2/desktop-sms-client-win64.zip)
 
 -----
 
