@@ -1,6 +1,10 @@
 var fs = require('fs');
 var ipcRend = require('electron').ipcRenderer;
 
+function verifyAPIKey(key) {
+	return key && key.length > 0;
+}
+
 function getAPIKey() {
 	saveAPIKey(document.getElementById('apiField').value);
 }
@@ -13,16 +17,16 @@ function saveAPIKey(key) {
 	fs.writeFile(__dirname + '/mem/apikey.txt', key, function(err) {
 		if(err) {
 			return console.log(err);
-		} else if (key !== null && key !== '' && key.length > 0) {
-			ipcRend.sendSync('api-key-ready', true);
+		} else if (verifyAPIKey(key)) {
+			ipcRend.send('api-key-ready', true);
 		}
 	});
 }
 
 function loadAPIKey() {
 	key = fs.readFileSync(__dirname + '/mem/apikey.txt');
-	if (key !== null && key !== '' && key.length > 0) {
-		ipcRend.sendSync('api-key-ready', true);
+	if (verifyAPIKey(key)) {
+		ipcRend.send('api-key-ready', true);
 	}
 }
 
