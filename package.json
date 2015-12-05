@@ -12,7 +12,7 @@
     "build:win": "npm run clean:win && electron-packager ./app Desktop-SMS-Client --out=dist/win --platform=win32 --arch=ia32 --version=0.35.2 --icon=assets/win/icon.ico",
     "pack": "npm run pack:osx && npm run pack:win",
     "pack:osx": "npm run build:osx && electron-builder dist/osx/Desktop-SMS-Client.app --platform=osx --out=dist/osx --config=packager.json",
-    "pack:win": "npm run build:win && electron-builder \"dist/win/Desktop-SMS-Client-win32\" --platform=win --out=\"dist/win\" --config=packager.json"
+    "pack:win": "npm run build:win && electron-builder dist/win/Desktop-SMS-Client-win32-ia32 --platform=win --out=dist/win --config=packager.json"
   },
   "author": "Justin Tervay",
   "license": "MIT",
@@ -40,6 +40,7 @@
   "homepage": "https://github.com/jtervay97/Desktop-SMS-Client#readme",
   "description": "",
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "node-rest-client": "^1.5.1"
   }
 }

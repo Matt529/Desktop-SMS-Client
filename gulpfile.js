@@ -12,6 +12,9 @@ var jsDest = './app/scripts/min';
 var cssGlob = './app/css/src/**/*.css';
 var cssDest = './app/css/min';
 
+var packageJson = require('./package.json');
+var packagerJson = require('./packager.json');
+
 gulp.task('clean', function() {
   return gulp.src(jsDest + '/**/*.min.js', {read: false})
   .pipe(rimraf());
@@ -37,7 +40,8 @@ gulp.task('styles', ['clean'], function() {
   .pipe(gulp.dest(cssDest));
 });
 
-gulp.task('build', ['minjs', 'styles'])
+gulp.task('build', ['minjs', 'styles'], function() {
+});
 
 gulp.task('watch', function() {
   gulp.watch([cssGlob], ['styles']);
