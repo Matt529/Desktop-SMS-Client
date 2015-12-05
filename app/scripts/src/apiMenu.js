@@ -1,40 +1,68 @@
-var fs = require('fs');
-var ipcRend = require('electron').ipcRenderer;
+(function() {
+	// Cache when found
+	var key;
 
-function verifyAPIKey(key) {
-	return key && key.length > 0;
-}
+	var jQuery = require('jquery');
+	var fs = require('fs');
+	var ipcRend = require('electron').ipcRenderer;
 
-function getAPIKey() {
-	saveAPIKey(document.getElementById('apiField').value);
-}
+	// jQuery Selectors
+	var enterBtn = jQuery('#enterButton');
+	var apiField = jQuery('#apiField');
 
-function saveAPIKey(key) {
-	if(key === undefined) {
-		key = '';
+	// Verify Key is Correctly Formatted
+	function verify(key) {
+		return key && key.length > 0;
 	}
 
-	fs.writeFile(__dirname + '/mem/apikey.txt', key, function(err) {
-		if(err) {
-			return console.log(err);
-		} else if (verifyAPIKey(key)) {
-			ipcRend.send('api-key-ready', true);
+	// Get the API Key from File or Input Field
+	function getAPIKey(fromFile) {
+		if(key && verify(key))
+			return key;
+
+		if(fromFile)
+			key = loadAPIKey();
+		else
+			key = apiField.val();
+
+		if(verify(key)) {
+			saveAPIKey(key);
+			return key;
+		} else {
+			return null;
+		}
+	}
+
+	// Save API Key to File
+	function saveAPIKey(key) {
+		fs.writeFile(__dirname + '/mem/apikey.txt', key, function(err) {
+			if(err) {
+				return console.log(err);
+			} else if (verifyAPIKey(key)) {
+				ipcRend.send('api-key-ready', true);
+			}
+		});
+	}
+
+	// Load API Key from File
+	function loadAPIKey() {
+		return fs.readFileSync(__dirname + '/mem/apikey.txt');
+	}
+
+	// Register Key Press Handler for text field
+	apiField.keypress(function(e) {
+		if(e.which == 13) {
+			enterBtn.click();
 		}
 	});
-}
 
-function loadAPIKey() {
-	key = fs.readFileSync(__dirname + '/mem/apikey.txt');
-	if (verifyAPIKey(key)) {
+	// Register Click Handler
+	enterBtn.click(function(e) {
+		if(getAPIKey(false))
+			ipcRend.send('api-key-ready', true);
+	});
+
+	// First Check if Valid API Key already in File
+	if(getAPIKey(true))
 		ipcRend.send('api-key-ready', true);
-	}
-}
-
-function handleEnterKeyPress(e) {
-	e = e || window.event;
-	if(e.keyCode == 13) {
-		document.getElementById('enterButton').click();
-		return false;
-	}
-	return true;
-}
+})();

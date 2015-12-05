@@ -38,5 +38,8 @@
     "url": "https://github.com/jtervay97/Desktop-SMS-Client/issues"
   },
   "homepage": "https://github.com/jtervay97/Desktop-SMS-Client#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
 }
