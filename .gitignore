@@ -1,2 +1,5 @@
+# Ignore Lib Details
 node_modules/
-dist/
+
+# Ignore Distribution Details
+releases/

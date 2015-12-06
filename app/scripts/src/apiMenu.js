@@ -2,8 +2,10 @@
   // Cache when found
   var key;
 
-  var jQuery = require('jquery');
   var fs = require('fs');
+  var path = require('path');
+
+  var jQuery = require('jquery');
   var ipcRend = require('electron').ipcRenderer;
 
   // jQuery Selectors
@@ -35,7 +37,7 @@
 
   // Save API Key to File
   function saveAPIKey(key) {
-    fs.writeFile(__dirname + '/mem/apikey.txt', key, function(err) {
+    fs.writeFile(path.join(__dirname, 'mem', 'apikey.txt'), key, function(err) {
       if (err) {
         return console.log(err);
       } else if (verifyAPIKey(key)) {
@@ -46,7 +48,7 @@
 
   // Load API Key from File
   function loadAPIKey() {
-    return fs.readFileSync(__dirname + '/mem/apikey.txt');
+    return fs.readFileSync(path.join(__dirname, 'mem', 'apiKey.txt'));
   }
 
   // Register Key Press Handler for text field

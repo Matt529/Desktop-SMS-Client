@@ -3,8 +3,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     minifycss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
-    rimraf = require('gulp-rimraf'),
+    rimrafGulp = require('gulp-rimraf'),
+    electron = require('gulp-electron'),
     ignore = require('gulp-ignore');
+
+var rimraf = require('rimraf');
+var exec = require('child_process').exec;
+var util = require('util');
 
 var jsGlob = './app/scripts/src/**/*.js';
 var jsDest = './app/scripts/min';
@@ -13,11 +18,44 @@ var cssGlob = './app/css/src/**/*.css';
 var cssDest = './app/css/min';
 
 var packageJson = require('./package.json');
-var packagerJson = require('./packager.json');
+var electronVersion = packageJson.devDependencies['electron-prebuilt'];
+
+var cleanCmd = 'npm run clean:win';
+var cmdTemplate = 'electron-packager . %s --out=releases/%s --platform=%s --arch=%s --version=%s --icon=assets/win/icon.ico --ignore="%s" --overwrite'
+var ignores = [];
+
+for(var k in packageJson.dependencies)
+  ignores.push(k);
+
+function execCallback(cb) {
+   return function(error, stdOut, stdErr) {
+    console.log(stdOut);
+    console.log(stdErr);
+  };
+}
+
+function getIgnoreRegex() {
+  return util.format('(node_modules/(?!%s))|(releases)|(packager)|(git)', ignores.join('|'));
+}
+
+function getWinBuildCommand(appName, ignoreRegexp) {
+  return util.format(cmdTemplate, appName, 'win', 'win32', 'ia32', electronVersion, ignoreRegexp);
+}
+
+function getOsxBuildCommand(appName, ignoreRegexp) {
+  return util.format(cmdTemplate, appName, 'osx', 'darwin', 'x64', electronVersion, ignoreRegexp);
+}
+
+// Start Tasks //
 
 gulp.task('clean', function() {
   return gulp.src(jsDest + '/**/*.min.js', {read: false})
-  .pipe(rimraf());
+  .pipe(rimrafGulp());
+});
+
+gulp.task('clean-dist', function() {
+  rimraf.sync('./releases/win');
+  rimraf.sync('./releases/osx');
 });
 
 gulp.task('hint', function() {
@@ -40,12 +78,19 @@ gulp.task('styles', ['clean'], function() {
   .pipe(gulp.dest(cssDest));
 });
 
-gulp.task('build', ['minjs', 'styles'], function() {
+gulp.task('build', ['minjs', 'styles']);
+
+// Build, Clean Dist and Run Packager Commands
+gulp.task('dist', ['build', 'clean-dist'], function(cb) {
+  exec(getWinBuildCommand('Desktop-SMS-Client', getIgnoreRegex()), execCallback(cb));
+  exec(getOsxBuildCommand('Desktop-SMS-Client', getIgnoreRegex()), execCallback(cb));
 });
 
+// Observe globbed files for changes, execute given tasks when modified
 gulp.task('watch', function() {
   gulp.watch([cssGlob], ['styles']);
   gulp.watch([jsGlob], ['minjs']);
 });
 
+// Executed when 'gulp' is executed. Goes into watch.
 gulp.task('default', ['minjs', 'styles', 'watch']);
