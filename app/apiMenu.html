@@ -9,12 +9,16 @@
 		<link rel="stylesheet" type="text/css" href="./css/min/apiInputCSS.min.css">
 	</head>
 	</body>
-		<h1>Please enter your Yappy API key.</h1>
+		<h1 class="noselect">Please enter your Yappy API key.</h1>
 		<form>
 			<input type="text" name="apiKeyInput" placeholder="API Key" id="apiField">
 		</form>
-		<div class="button raised" id="enterButton">
-			<div class="center" fit>Enter</div>
+		<div class="noselect button raised" id="enterButton">
+			<div class="noselect center" fit>Enter</div>
+			<paper-ripple fit></paper-ripple>
+		</div>
+		<div class="noselect button raised" id="takeMeThereButton" style="margin-left: 1em;">
+			<div class="noselect center" fit>Take me to it!</div>
 			<paper-ripple fit></paper-ripple>
 		</div>
 		<script type="text/javascript" src="./scripts/min/apiMenu.min.js" ></script>

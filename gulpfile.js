@@ -21,9 +21,11 @@ var packageJson = require('./package.json');
 var electronVersion = packageJson.devDependencies['electron-prebuilt'];
 
 var cleanCmd = 'npm run clean:win';
-var cmdTemplate = 'electron-packager . %s --out=releases/%s --platform=%s --arch=%s --version=%s --icon=assets/win/icon.ico --ignore="%s" --overwrite'
-var ignores = [];
+var cmdTemplate = 'electron-packager . %s --out=releases/%s --platform=%s --arch=%s --version=%s --icon=assets/win/icon.ico --ignore="%s" --prune --overwrite'
 
+// TODO See below, remove ignores generation and focus on keeping
+// dependencies we need out of devDependencies (--prune will handle it)
+var ignores = [];
 for(var k in packageJson.dependencies)
   ignores.push(k);
 
@@ -35,7 +37,9 @@ function execCallback(cb) {
 }
 
 function getIgnoreRegex() {
-  return util.format('(node_modules/(?!%s))|(releases)|(packager)|(git)', ignores.join('|'));
+  // TODO Remove, temporary will stay. --prune worked better
+  // return util.format('(node_modules/(?!%s))|(releases)|(packager)|(git)', ignores.join('|'));
+  return '(releases)|(packager)|(git)';
 }
 
 function getWinBuildCommand(appName, ignoreRegexp) {
