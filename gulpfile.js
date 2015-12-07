@@ -58,8 +58,8 @@ gulp.task('clean', function() {
 });
 
 gulp.task('clean-dist', function() {
-  rimraf.sync('./releases/win');
-  rimraf.sync('./releases/osx');
+  rimraf.sync('./releases/win', {maxBusyTries: 30});
+  rimraf.sync('./releases/osx', {maxBusyTries: 30});
 });
 
 gulp.task('hint', function() {
