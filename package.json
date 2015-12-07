@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "main": "./main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "gulp build && electron .",
     "clean": "rmdir /s /q \"./dist\"",
     "clean:osx": "rmdir /s /q \"./dist/osx\"",
     "clean:win": "rmdir /s /q \"./dist/win\"",
@@ -43,6 +43,7 @@
   "description": "",
   "dependencies": {
     "jquery": "^2.1.4",
+    "jsonfile": "^2.2.3",
     "node-notifier": "^4.3.1",
     "unirest": "^0.4.2"
   }

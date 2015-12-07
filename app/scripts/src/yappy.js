@@ -1,4 +1,10 @@
+var fs = require('fs');
+var path = require('path');
+var util = require('util');
 var unirest = require('unirest');
+var jsonfile = require('jsonfile');
+
+var utility = require('./utility');
 
 /*
   YappyClient constructor, requires an API Key
@@ -66,7 +72,11 @@ module.exports.createYappy = function(apiKey, callback) {
   var yappy = new YappyClient(apiKey);
 
   yappy.makeGet('https://api.yappy.im/v1/users/me', {}, function(response) {
-    yappy.user = response.body;
+    yappy.user = {
+      name: response.body.name,
+      email: response.body.email,
+      avatar: response.body.avatar_url,
+    };
 
     return yappy.makeGet('https://api.yappy.im/v1/devices', {}, function(response) {
       yappy.devices = response.body.devices;

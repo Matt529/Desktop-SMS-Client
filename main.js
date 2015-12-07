@@ -32,6 +32,5 @@ ipc.on('close-main-window', function() {
 ipc.on('api-key-ready', function(flag) {
 	if(flag) {
 		win.loadURL('file://' + __dirname + '/app/index.html');
-		win.toggleDevTools();
 	}
 });
