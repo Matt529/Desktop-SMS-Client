@@ -1,0 +1,629 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro:400,500,700' rel='stylesheet' type='text/css'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation'>
+  <div class='container'>
+    <div class='clearfix md-mxn2'>
+      <div class='fixed md-show fix-3 overflow-auto max-height-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block field'
+            type='text' />
+          <div id='toc'>
+              <a
+                href='#utility'
+                class='block bold'>
+                utility
+              </a>
+                <a
+                  href='#utility.createYappy'
+                  class='regular block'>
+                  .createYappy
+                </a>
+              <a
+                href='#IpcCommunicator'
+                class='block bold'>
+                IpcCommunicator
+              </a>
+                <a
+                  href='#IpcCommunicator.doApiKeyPass'
+                  class='regular block'>
+                  .doApiKeyPass
+                </a>
+                <a
+                  href='#IpcCommunicator.doCloseMainWindow'
+                  class='regular block'>
+                  .doCloseMainWindow
+                </a>
+              <a
+                href='#getUserHome'
+                class='block bold'>
+                getUserHome
+              </a>
+              <a
+                href='#ifDebug'
+                class='block bold'>
+                ifDebug
+              </a>
+              <a
+                href='#isDebug'
+                class='block bold'>
+                isDebug
+              </a>
+              <a
+                href='#isRenderer'
+                class='block bold'>
+                isRenderer
+              </a>
+              <a
+                href='#YappyClient'
+                class='block bold'>
+                YappyClient
+              </a>
+                <a
+                  href='#YappyClient.makeGet'
+                  class='regular block'>
+                  #makeGet
+                </a>
+                <a
+                  href='#YappyClient.makePost'
+                  class='regular block'>
+                  #makePost
+                </a>
+              <a
+                href='#openInExternalBrowser'
+                class='block bold'>
+                openInExternalBrowser
+              </a>
+              <a
+                href='#retrieveDevices'
+                class='block bold'>
+                retrieveDevices
+              </a>
+              <a
+                href='#retrieveDevicesCallback'
+                class='block bold'>
+                retrieveDevicesCallback
+              </a>
+              <a
+                href='#retrieveUser'
+                class='block bold'>
+                retrieveUser
+              </a>
+              <a
+                href='#retrieveUserCallback'
+                class='block bold'>
+                retrieveUserCallback
+              </a>
+              <a
+                href='#toArray'
+                class='block bold'>
+                toArray
+              </a>
+              <a
+                href='#yappy'
+                class='block bold'>
+                yappy
+              </a>
+              <a
+                href='#yappyCallback'
+                class='block bold'>
+                yappyCallback
+              </a>
+          </div>
+        </div>
+      </div>
+      <div class='fix-margin-3'>
+        <div class='px2'>
+<div class='py1'><section class='py2 clearfix'>
+  <h2 id='utility' class='mt0'>
+    utility<span class='gray'></span>
+  </h2>
+  <p>Utility Module</p>
+
+      <h4>Static members</h4>
+        <div class='collapsible' id='utility.createYappy'>
+          <a href='#utility.createYappy'>
+            <code>
+              .createYappy<span class='gray'>(apiKey, cb)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Creates a Yappy Client and initializes the data, specifically user and device
+data for later use.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2 m2'>
+            <section class='py2 clearfix'>
+              <h2 id='utility.createYappy' class='mt0'>
+                createYappy<span class='gray'>(apiKey, cb)</span>
+              </h2>
+              <p>Creates a Yappy Client and initializes the data, specifically user and device
+            data for later use.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>apiKey</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Yappy API Key for specific user</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="#yappyCallback">yappyCallback</a></code> <strong>cb</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Callback that takes (error, yappyClient)</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='IpcCommunicator' class='mt0'>
+    IpcCommunicator<span class='gray'>(key, url, noDebug)</span>
+  </h2>
+  <p>Convenience object for handling Inter-Process Communication using predetermined
+protocols.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li> <strong>key</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+        <li> <strong>url</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+        <li> <strong>noDebug</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+    </ul>
+      <h4>Static members</h4>
+        <div class='collapsible' id='IpcCommunicator.doApiKeyPass'>
+          <a href='#IpcCommunicator.doApiKeyPass'>
+            <code>
+              .doApiKeyPass<span class='gray'>(key, url, [noDebug])</span>
+            </code>
+            <div class='force-inline'>
+              <p>Does an API Key Pass handled by the main process</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2 m2'>
+            <section class='py2 clearfix'>
+              <h2 id='IpcCommunicator.doApiKeyPass' class='mt0'>
+                doApiKeyPass<span class='gray'>(key, url, [noDebug])</span>
+              </h2>
+              <p>Does an API Key Pass handled by the main process</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>key</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>API Key</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>url</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>URL relative to root directory to load and re-pass API key</p>
+            
+                      </div>
+                    </li>
+                    <li><code>[<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>]</code> <strong>noDebug</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>If Debug is On this forces Debug Options ot not run [Optional, Defualt=false]</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='IpcCommunicator.doCloseMainWindow'>
+          <a href='#IpcCommunicator.doCloseMainWindow'>
+            <code>
+              .doCloseMainWindow<span class='gray'></span>
+            </code>
+            <div class='force-inline'>
+              <p>Fires an event that casues the application to completely quit</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2 m2'>
+            <section class='py2 clearfix'>
+              <h2 id='IpcCommunicator.doCloseMainWindow' class='mt0'>
+                doCloseMainWindow<span class='gray'></span>
+              </h2>
+              <p>Fires an event that casues the application to completely quit</p>
+            
+            </section>
+          </div>
+        </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='getUserHome' class='mt0'>
+    getUserHome<span class='gray'></span>
+  </h2>
+  <p>Retrieves the home directory of the current user from the process environment
+variables. On unix-like systems this is likely to be /home/<username>, on
+Windows systems this will likely be C:\Users\<Username>.</p>
+
+      <h4>Returns</h4>
+      <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code></code>
+      :
+      <div class='force-inline'>
+        <p>Home directory of the current user</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='ifDebug' class='mt0'>
+    ifDebug<span class='gray'>(func, ctxt)</span>
+  </h2>
+  <p>Runs the given function in the given context if and only if isDebug
+returns true. Any arguments after the first two are passed to the given
+function as arguments.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a></code> <strong>func</strong>
+          :
+          <div class='force-inline'>
+            <p>Function to call if debug is on</p>
+
+          </div>
+        </li>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>ctxt</strong>
+          :
+          <div class='force-inline'>
+            <p>Context in which to execute the function. Determines &apos;this&apos;</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='isDebug' class='mt0'>
+    isDebug<span class='gray'></span>
+  </h2>
+  
+      <h4>Returns</h4>
+      <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code></code>
+      :
+      <div class='force-inline'>
+        <p>true if the DEBUG environment variable is set, false otherwise</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='isRenderer' class='mt0'>
+    isRenderer<span class='gray'></span>
+  </h2>
+  
+      <h4>Returns</h4>
+      <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code></code>
+      :
+      <div class='force-inline'>
+        <p>true if in renderer process, false otherwise (in main process for example)</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='YappyClient' class='mt0'>
+    YappyClient<span class='gray'>(apiKey)</span>
+  </h2>
+  <p>YappyClient constructor, requires an API Key. This constructor does little on it&apos;s
+own, see createYappy</p>
+<p>Is not public. Use createYappy.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>apiKey</strong>
+          :
+          <div class='force-inline'>
+            <p>Yappy API key for specific user</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Instance members</h4>
+        <div class='collapsible' id='YappyClient.makeGet'>
+          <a href='#YappyClient.makeGet'>
+            <code>
+              #makeGet<span class='gray'>(url, parameters, callback)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Make a GET request to the given URL wit hthe specific parameters. When a
+reponse is received it is passed to the given callback.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='YappyClient.makeGet' class='mt0'>
+                makeGet<span class='gray'>(url, parameters, callback)</span>
+              </h2>
+              <p>Make a GET request to the given URL wit hthe specific parameters. When a
+            reponse is received it is passed to the given callback.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>url</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>URL to make request to</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>parameters</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Enumeration of GET params</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a></code> <strong>callback</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Callback once request returns, takes response object</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='YappyClient.makePost'>
+          <a href='#YappyClient.makePost'>
+            <code>
+              #makePost<span class='gray'>(url, headers, parameters, callback)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Makes a POST request to the given URL with the specified headers and
+parameters. When a response is received it is passed to the given callback.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2'>
+            <section class='py2 clearfix'>
+              <h2 id='YappyClient.makePost' class='mt0'>
+                makePost<span class='gray'>(url, headers, parameters, callback)</span>
+              </h2>
+              <p>Makes a POST request to the given URL with the specified headers and
+            parameters. When a response is received it is passed to the given callback.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>url</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>URL to make request to</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>headers</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>POST Header Enumeration</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>parameters</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Enumeration of POST params</p>
+            
+                      </div>
+                    </li>
+                    <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a></code> <strong>callback</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Callback once request returns, takes response object</p>
+            
+                      </div>
+                    </li>
+                </ul>
+            </section>
+          </div>
+        </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='openInExternalBrowser' class='mt0'>
+    openInExternalBrowser<span class='gray'>(url)</span>
+  </h2>
+  <p>Attempts to open the given URL in the default external browser for the
+current User.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>url</strong>
+          :
+          <div class='force-inline'>
+            <p>Web URL</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='retrieveDevices' class='mt0'>
+    retrieveDevices<span class='gray'>(callback)</span>
+  </h2>
+  <p>Retrieves device details for yappy client</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="#retrieveDevicesCallback">retrieveDevicesCallback</a></code> <strong>callback</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='retrieveDevicesCallback' class='mt0'>
+    retrieveDevicesCallback<span class='gray'>(err, devices)</span>
+  </h2>
+  
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></code> or <code>Null</code> <strong>err</strong>
+          :
+          <div class='force-inline'>
+            <p>The Error that Occurred or Null</p>
+
+          </div>
+        </li>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code><<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>> <strong>devices</strong>
+          :
+          <div class='force-inline'>
+            <p>Array of Device Objects tied to User</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='retrieveUser' class='mt0'>
+    retrieveUser<span class='gray'>(callback)</span>
+  </h2>
+  <p>Retrieves user details for yappy Client</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="#retrieveUserCallback">retrieveUserCallback</a></code> <strong>callback</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='retrieveUserCallback' class='mt0'>
+    retrieveUserCallback<span class='gray'>(err, user)</span>
+  </h2>
+  
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></code> or <code>Null</code> <strong>err</strong>
+          :
+          <div class='force-inline'>
+            <p>The Error that Occurred or Null</p>
+
+          </div>
+        </li>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>user</strong>
+          :
+          <div class='force-inline'>
+            <p>User Object</p>
+
+          </div>
+            <ul>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> user.name
+                  <p>User name</p>
+</li>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> user.email
+                  <p>User email</p>
+</li>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> user.avatar
+                  <p>URL Location of User&apos;s Avatar Image</p>
+</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='toArray' class='mt0'>
+    toArray<span class='gray'>(args, index)</span>
+  </h2>
+  <p>Converts the given sequential object to an array starting at the element
+at the given index. Typically this is used for variable arguments using the
+supplied Arguments object as the first parameter.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>args</strong>
+          :
+          <div class='force-inline'>
+            <p>Sequential Object (Usually arguments)</p>
+
+          </div>
+        </li>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code> <strong>index</strong>
+          :
+          <div class='force-inline'>
+            <p>starting index</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code></code>
+      :
+      <div class='force-inline'>
+        <p>Array of elements from sequential object</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='yappy' class='mt0'>
+    yappy<span class='gray'></span>
+  </h2>
+  <p>Yappy Client Module</p>
+
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='yappyCallback' class='mt0'>
+    yappyCallback<span class='gray'>(yappy)</span>
+  </h2>
+  
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="#YappyClient">YappyClient</a></code> <strong>yappy</strong>
+          :
+          <div class='force-inline'>
+            <p>Yappy Client Object with Initialized Data</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

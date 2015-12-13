@@ -1,0 +1,10 @@
+{
+  "esnext": true,
+  "evil": true,
+  "lastsemic": true,
+  "undef": true,
+  "noarg": true,
+  "bitwise": true,
+  "node": true,
+  "newcap": true
+}

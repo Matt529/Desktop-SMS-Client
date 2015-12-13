@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     rimrafGulp = require('gulp-rimraf'),
     electron = require('gulp-electron'),
+    documentation = require('gulp-documentation'),
     ignore = require('gulp-ignore');
 
 var rimraf = require('rimraf');
@@ -64,8 +65,9 @@ gulp.task('clean-dist', function() {
 
 gulp.task('hint', function() {
   return gulp.src(jsGlob)
-  .pipe(jshint())
-  .pipe(jshint.reporter('default'));
+  .pipe(jshint('.jshintrc'))
+  .pipe(jshint.reporter('jshint-stylish'))
+  .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('minjs', ['hint'], function() {
@@ -94,6 +96,13 @@ gulp.task('dist', ['build', 'clean-dist'], function(cb) {
 gulp.task('watch', function() {
   gulp.watch([cssGlob], ['styles']);
   gulp.watch([jsGlob], ['minjs']);
+});
+
+gulp.task('docs', ['hint'], function() {
+  gulp.src('./app/scripts/*.js')
+  .pipe(ignore.exclude('.min.js'))
+  .pipe(documentation({format:'html'}))
+  .pipe(gulp.dest('./docs'));
 });
 
 // Executed when 'gulp' is executed. Goes into watch.
