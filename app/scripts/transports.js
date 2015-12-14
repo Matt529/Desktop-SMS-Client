@@ -40,7 +40,7 @@ BrowserConsole.prototype.log = function(level, msg, meta, callback) {
     meta: meta,
     colorize: false,
     timestamp: true,
-    label: 'COMMON',
+    label: '',
     json: false
   });
 

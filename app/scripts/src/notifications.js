@@ -10,13 +10,6 @@
 
   ipcComms.receiveApiKey(function(event, key) {
     yappy.createYappy(key, function(err, yappyClient) {
-      try {
-        throw new Error('TEST');
-      } catch(e) {
-        logger.error(e);
-      }
-
-
       if(err)
         logger.error(err);
       else
