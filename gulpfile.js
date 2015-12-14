@@ -101,7 +101,7 @@ gulp.task('watch', function() {
 gulp.task('docs', ['hint'], function() {
   gulp.src('./app/scripts/*.js')
   .pipe(ignore.exclude('.min.js'))
-  .pipe(documentation({format:'html'}))
+  .pipe(documentation({format:'md'}))
   .pipe(gulp.dest('./docs'));
 });
 
