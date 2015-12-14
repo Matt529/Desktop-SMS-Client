@@ -6,6 +6,7 @@ var ipc = require('electron').ipcMain;
 var Tray = require('electron').Tray;
 
 var utility = require(path.join(__dirname, 'app', 'scripts', 'utility'));
+var ipcComms = utility.communicator;
 
 var iconPath = path.join(__dirname, 'assets', 'win', 'icon.png');
 var win;

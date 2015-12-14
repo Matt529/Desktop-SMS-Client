@@ -23,6 +23,16 @@
             type='text' />
           <div id='toc'>
               <a
+                href='#apiKeyCallback'
+                class='block bold'>
+                apiKeyCallback
+              </a>
+              <a
+                href='#BrowserConsole'
+                class='block bold'>
+                BrowserConsole
+              </a>
+              <a
                 href='#utility'
                 class='block bold'>
                 utility
@@ -46,6 +56,11 @@
                   href='#IpcCommunicator.doCloseMainWindow'
                   class='regular block'>
                   .doCloseMainWindow
+                </a>
+                <a
+                  href='#IpcCommunicator.receiveApiKey'
+                  class='regular block'>
+                  .receiveApiKey
                 </a>
               <a
                 href='#getUserHome'
@@ -88,6 +103,11 @@
                 openInExternalBrowser
               </a>
               <a
+                href='#path'
+                class='block bold'>
+                path
+              </a>
+              <a
                 href='#retrieveDevices'
                 class='block bold'>
                 retrieveDevices
@@ -113,6 +133,11 @@
                 toArray
               </a>
               <a
+                href='#transports'
+                class='block bold'>
+                transports
+              </a>
+              <a
                 href='#yappy'
                 class='block bold'>
                 yappy
@@ -128,6 +153,57 @@
       <div class='fix-margin-3'>
         <div class='px2'>
 <div class='py1'><section class='py2 clearfix'>
+  <h2 id='apiKeyCallback' class='mt0'>
+    apiKeyCallback<span class='gray'>(event, key)</span>
+  </h2>
+  
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code> <strong>event</strong>
+          :
+          <div class='force-inline'>
+            
+          </div>
+        </li>
+        <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code> <strong>key</strong>
+          :
+          <div class='force-inline'>
+            <p>API Key String</p>
+
+          </div>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='BrowserConsole' class='mt0'>
+    BrowserConsole<span class='gray'>([opts])</span>
+  </h2>
+  <p>Creates a new Transport that handles sending log data to console.log or
+console.error so that the information is displayed to the BrowserConsole if
+the current process is the renderer process.</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><code>[<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>]</code> <strong>opts</strong>
+          :
+          <div class='force-inline'>
+            <p>Transport Options</p>
+
+          </div>
+            <ul>
+                <li><code>[<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>]</code> opts.name
+                    (default <code>BrowserConsole</code>)
+                  <p>Logger name</p>
+</li>
+                <li><code>[<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>]</code> opts.level
+                    (default <code>info</code>)
+                  <p>Log level to start recording at</p>
+</li>
+            </ul>
+        </li>
+    </ul>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='utility' class='mt0'>
     utility<span class='gray'></span>
   </h2>
@@ -179,7 +255,7 @@ data for later use.</p>
     IpcCommunicator<span class='gray'>(key, url, noDebug)</span>
   </h2>
   <p>Convenience object for handling Inter-Process Communication using predetermined
-protocols.</p>
+protocols. Primarily useful on the Renderer process.</p>
 
     <h4>Parameters</h4>
     <ul class='suppress-p-margin'>
@@ -264,6 +340,36 @@ protocols.</p>
               </h2>
               <p>Fires an event that casues the application to completely quit</p>
             
+            </section>
+          </div>
+        </div>
+        <div class='collapsible' id='IpcCommunicator.receiveApiKey'>
+          <a href='#IpcCommunicator.receiveApiKey'>
+            <code>
+              .receiveApiKey<span class='gray'>(callback)</span>
+            </code>
+            <div class='force-inline'>
+              <p>Receive API Key after calling <a href="doApiKeyPass"><code>doApiKeyPass</code></a>.</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2 m2'>
+            <section class='py2 clearfix'>
+              <h2 id='IpcCommunicator.receiveApiKey' class='mt0'>
+                receiveApiKey<span class='gray'>(callback)</span>
+              </h2>
+              <p>Receive API Key after calling <a href="doApiKeyPass"><code>doApiKeyPass</code></a>.</p>
+            
+                <h4>Parameters</h4>
+                <ul class='suppress-p-margin'>
+                    <li><code><a href="#apiKeyCallback">apiKeyCallback</a></code> <strong>callback</strong>
+                      :
+                      <div class='force-inline'>
+                        <p>Callback that receives the API Key</p>
+            
+                      </div>
+                    </li>
+                </ul>
             </section>
           </div>
         </div>
@@ -474,6 +580,12 @@ current User.</p>
     </ul>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='path' class='mt0'>
+    path<span class='gray'></span>
+  </h2>
+  
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='retrieveDevices' class='mt0'>
     retrieveDevices<span class='gray'>(callback)</span>
   </h2>
@@ -594,6 +706,13 @@ supplied Arguments object as the first parameter.</p>
         <p>Array of elements from sequential object</p>
 
       </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='transports' class='mt0'>
+    transports<span class='gray'></span>
+  </h2>
+  <p>Custom Winston Transports Module</p>
+
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
   <h2 id='yappy' class='mt0'>
