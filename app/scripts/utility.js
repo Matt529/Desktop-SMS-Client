@@ -174,8 +174,8 @@ module.exports = {
   'ifDebug': ifDebug,
   'isRenderer': isRenderer,
   'communicator': IpcCommunicator,
-  'API_KEY_PATH': path.join(getUserHome(), '.desktopSmsClient', '.apiKey'),
-  'LOGGER': logger
+  'logger': logger,
+  'API_KEY_PATH': path.join(getUserHome(), '.desktopSmsClient', '.apiKey')
 };
 
 /**

@@ -1,11 +1,13 @@
 (function() {
   const fs = require('fs');
+  const fse = require('fs-extra');
   const path = require('path');
 
   const jQuery = require('jquery');
   const ipcRend = require('electron').ipcRenderer;
   const utility = require(path.join(__dirname, 'scripts', 'utility'));
   const ipcComms = utility.communicator;
+  const logger = utility.logger;
 
   const apiKeyPath = utility.API_KEY_PATH;
 
@@ -31,7 +33,7 @@
       key = apiField.val();
 
     if(!key)
-      console.error((fromFile ? 'Load From File: ' : 'Load From Field: ') + 'Undefined API Key!');
+      logger.error((fromFile ? 'Load From File: ' : 'Load From Field: ') + 'Undefined API Key!');
 
     if (verify(key)) {
       saveAPIKey(key);
@@ -43,21 +45,11 @@
 
   // Save API Key to File
   function saveAPIKey(key) {
-    fs.stat(apiKeyPath, function(err, stats) {
-      if(err) {
-        try {
-          fs.mkdirSync(path.dirname(apiKeyPath));
-        } catch(e) {
-          console.error(e);
-        }
-      }
-
-      fs.writeFile(apiKeyPath, key, function(err) {
-        if(err)
-          return console.error(err);
-        else
-          console.log('wrote apikey');
-      });
+    fse.outputFile(apiKeyPath, key, function(err) {
+      if(err)
+        logger.error(err);
+      else
+        logger.info('Wrote API key to ' + apiKeyPath);
     });
   }
 
@@ -67,8 +59,8 @@
       fs.accessSync(apiKeyPath, fs.F_OK);
       return fs.readFileSync(apiKeyPath);
     } catch(e) {
-      console.error(e);
-      console.log('API Key File Not Found!');
+      logger.error(e);
+      logger.error('API Key File Not Found!');
     }
   }
 

@@ -6,7 +6,7 @@
   const yappy = require(path.join(__dirname, 'scripts', 'yappy'));
 
   const ipcComms = utility.communicator;
-  const logger = utility.LOGGER;
+  const logger = utility.logger;
 
   ipcComms.receiveApiKey(function(event, key) {
     yappy.createYappy(key, function(err, yappyClient) {

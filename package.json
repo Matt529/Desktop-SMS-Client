@@ -4,15 +4,17 @@
   "main": "./main.js",
   "scripts": {
     "start": "gulp build && electron .",
+    "debug": "set DEBUG=defined && npm start && set DEBUG=",
     "clean": "rmdir /s /q \"./dist\"",
     "clean:osx": "rmdir /s /q \"./dist/osx\"",
     "clean:win": "rmdir /s /q \"./dist/win\"",
-    "build": "npm run clean && npm run build:odx && npm run build:win",
+    "build": "gulp dist",
     "build:osx": "npm run clean:osx && electron-packager . Desktop-SMS-Client --out=dist/osx --platform=darwin --arch=x64 --version=0.35.2 --icon=assets/osx/loopline.icns",
     "build:win": "npm run clean:win && electron-packager . Desktop-SMS-Client --out=dist/win --platform=win32 --arch=ia32 --version=0.35.2 --icon=assets/win/icon.ico --ignore=\"(node_modules/(?!node-notifier|unirest|jquery))|(packager)|(git)\"",
     "pack": "npm run pack:osx && npm run pack:win",
     "pack:osx": "npm run build:osx && electron-builder dist/osx/Desktop-SMS-Client.app --platform=osx --out=dist/osx --config=packager.json",
-    "pack:win": "npm run build:win && electron-builder dist/win/Desktop-SMS-Client-win32-ia32 --platform=win --out=dist/win --config=packager.json"
+    "pack:win": "npm run build:win && electron-builder dist/win/Desktop-SMS-Client-win32-ia32 --platform=win --out=dist/win --config=packager.json",
+    "docs": "gulp docs"
   },
   "author": "Justin Tervay",
   "license": "MIT",
@@ -46,9 +48,10 @@
   "description": "",
   "dependencies": {
     "async": "^1.5.0",
+    "fs-extra": "^0.26.2",
     "jquery": "^2.1.4",
     "jsonfile": "^2.2.3",
-    "node-notifier": "^4.3.1",
+    "node-notifier": "^4.4.0",
     "unirest": "^0.4.2",
     "winston": "^2.1.1"
   }
