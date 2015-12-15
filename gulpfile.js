@@ -21,7 +21,6 @@ var cssDest = './app/css/min';
 var packageJson = require('./package.json');
 var electronVersion = packageJson.devDependencies['electron-prebuilt'];
 
-var cleanCmd = 'npm run clean:win';
 var cmdTemplate = 'electron-packager . %s --out=releases/%s --platform=%s --arch=%s --version=%s --icon=assets/win/icon.ico --ignore="%s" --prune --overwrite'
 
 // TODO See below, remove ignores generation and focus on keeping

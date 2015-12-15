@@ -22,7 +22,7 @@
     "debug-menu": "^0.2.0",
     "electron-builder": "^2.3.0",
     "electron-packager": "^5.1.1",
-    "electron-prebuilt": "^0.35.2",
+    "electron-prebuilt": "^0.36.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-documentation": "^2.1.0",
@@ -33,7 +33,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-rimraf": "^0.2.0",
     "gulp-uglify": "^1.5.1",
-    "jshint": "^2.8.0",
+    "jshint": "^2.9.1-rc1",
     "jshint-stylish": "^2.1.0",
     "rimraf": "^2.4.4"
   },
