@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
+const moment = require('moment');
 const unirest = require('unirest');
 const jsonfile = require('jsonfile');
 const async = require('async');
@@ -20,7 +21,7 @@ const utility = require('./utility');
 function YappyClient(apiKey) {
   this.apiKey = apiKey;
   this.unreadMap = {};
-  this.lastCheckTime = Date.now();
+  this.lastCheckTime = null;
 }
 
 /**
@@ -79,7 +80,7 @@ YappyClient.prototype.update = function(unreadCallback, newCallback) {
     this.makeGet('https://api.yappy.im/v1/devices/'+ device + '/conversations', params, respFunc);
   }
 
-  this.lastCheckTime = Date.now();
+  this.lastCheckTime = moment();
 };
 
 /**

@@ -51,6 +51,7 @@
     "fs-extra": "^0.26.2",
     "jquery": "^2.1.4",
     "jsonfile": "^2.2.3",
+    "moment": "^2.10.6",
     "node-notifier": "^4.4.0",
     "unirest": "^0.4.2",
     "winston": "^2.1.1"
